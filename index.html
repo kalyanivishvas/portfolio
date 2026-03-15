@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kalyani Shirambekar — UI/UX Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#0d0d14;color:#f0eeff;font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 6vw;background:rgba(13,13,20,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(130,100,255,0.15);}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:#f0eeff;text-decoration:none;}
+.logo span{color:#8264ff;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:#9090a8;text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:#f0eeff;}
+.nav-btn{background:#8264ff;color:#fff;text-decoration:none;padding:.5rem 1.3rem;border-radius:100px;font-size:.85rem;font-weight:600;}
+.nav-btn:hover{background:#9b7dff;}
+
+#hero{min-height:100vh;display:flex;align-items:center;padding:6rem 6vw 4rem;position:relative;overflow:hidden;}
+.glow1{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(130,100,255,0.16) 0%,transparent 70%);top:-80px;right:-80px;pointer-events:none;border-radius:50%;}
+.glow2{position:absolute;width:350px;height:350px;background:radial-gradient(circle,rgba(252,92,125,0.09) 0%,transparent 70%);bottom:0;left:5%;pointer-events:none;border-radius:50%;}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(130,100,255,0.12);border:1px solid rgba(130,100,255,0.3);border-radius:100px;padding:.35rem 1rem;font-size:.72rem;font-weight:700;color:#8264ff;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.5rem;}
+.badge::before{content:'';width:7px;height:7px;border-radius:50%;background:#5cf0c8;box-shadow:0 0 8px #5cf0c8;}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5.5vw,4.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;}
+.grad{background:linear-gradient(135deg,#8264ff,#fc5c7d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-p{color:#9090a8;font-size:1rem;line-height:1.75;max-width:460px;margin-bottom:2rem;}
+.btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-a{background:#8264ff;color:#fff;text-decoration:none;padding:.8rem 2rem;border-radius:100px;font-weight:600;font-size:.92rem;box-shadow:0 4px 24px rgba(130,100,255,0.4);display:inline-block;}
+.btn-a:hover{background:#9b7dff;}
+.btn-b{border:1px solid rgba(130,100,255,0.35);color:#f0eeff;text-decoration:none;padding:.8rem 2rem;border-radius:100px;font-weight:500;font-size:.92rem;display:inline-block;}
+.btn-b:hover{border-color:#8264ff;background:rgba(130,100,255,0.1);}
+
+.id-card{background:linear-gradient(145deg,#16162a,#1e1e38);border:1px solid rgba(130,100,255,0.25);border-radius:24px;padding:2.5rem;position:relative;overflow:hidden;}
+.id-card::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;background:radial-gradient(circle,rgba(130,100,255,0.22) 0%,transparent 70%);border-radius:50%;}
+.ic-name{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:.2rem;}
+.ic-role{color:#8264ff;font-size:.85rem;font-weight:600;margin-bottom:1.4rem;}
+.ic-div{height:1px;background:rgba(130,100,255,0.15);margin:1.2rem 0;}
+.ic-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem;}
+.ic-icon{width:36px;height:36px;border-radius:10px;background:rgba(130,100,255,0.12);border:1px solid rgba(130,100,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ic-lbl{font-size:.72rem;color:#9090a8;margin-bottom:.1rem;}
+.ic-val{font-size:.87rem;font-weight:500;}
+.ic-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.3rem;}
+.chip{background:rgba(130,100,255,0.1);border:1px solid rgba(130,100,255,0.2);border-radius:100px;padding:.28rem .8rem;font-size:.73rem;color:#c4b8ff;font-weight:500;}
+
+.strip{background:#13131f;border-top:1px solid rgba(130,100,255,0.12);border-bottom:1px solid rgba(130,100,255,0.12);padding:.9rem 0;overflow:hidden;}
+.strip-track{display:flex;gap:2.5rem;width:max-content;animation:slide 28s linear infinite;}
+.s-item{display:flex;align-items:center;gap:.5rem;white-space:nowrap;color:#9090a8;font-size:.78rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;}
+.s-dot{color:#8264ff;}
+@keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+section{padding:6rem 6vw;}
+.stag{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#8264ff;font-weight:700;margin-bottom:.6rem;}
+h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:1rem;}
+.sub{color:#9090a8;font-size:.96rem;line-height:1.75;max-width:500px;}
+
+#about{background:#13131f;}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;}
+.a-card{background:#0d0d14;border:1px solid rgba(130,100,255,0.18);border-radius:24px;overflow:hidden;}
+.a-top{background:linear-gradient(135deg,#1a1030,#271540);padding:2.5rem 2rem;text-align:center;}
+.avatar{width:80px;height:80px;border-radius:50%;background:rgba(130,100,255,0.2);border:3px solid rgba(130,100,255,0.4);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto .9rem;}
+.a-name{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;}
+.a-role{color:#8264ff;font-size:.8rem;margin-top:.25rem;}
+.a-bot{padding:1.4rem 1.8rem;}
+.stat-row{display:flex;gap:.8rem;}
+.astat{flex:1;background:#13131f;border:1px solid rgba(130,100,255,0.12);border-radius:12px;padding:.85rem;text-align:center;}
+.astat-n{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#8264ff;}
+.astat-l{font-size:.68rem;color:#9090a8;margin-top:.15rem;}
+.about-txt p{color:#9090a8;line-height:1.8;margin-bottom:1rem;font-size:.95rem;}
+.about-txt p strong{color:#f0eeff;}
+.pt-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;margin:1.8rem 0 .9rem;}
+.pills{display:flex;flex-wrap:wrap;gap:.55rem;}
+.pill{background:#16162a;border:1px solid rgba(130,100,255,0.2);border-radius:100px;padding:.35rem .85rem;font-size:.78rem;color:#c4b8ff;font-weight:500;}
+.pill.cert{background:rgba(130,100,255,0.08);border-color:rgba(130,100,255,0.25);color:#d4c8ff;}
+
+#projects{background:#0d0d14;}
+.proj-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+.note-box{background:rgba(255,189,46,0.07);border:1px solid rgba(255,189,46,0.22);border-radius:12px;padding:.7rem 1.2rem;font-size:.79rem;color:#ffbd2e;max-width:310px;line-height:1.55;}
+.note-box strong{display:block;margin-bottom:.2rem;}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;}
+.pcard{background:#13131f;border:1px solid rgba(130,100,255,0.15);border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;display:block;text-decoration:none;color:inherit;}
+.pcard:hover{transform:translateY(-5px);border-color:rgba(130,100,255,0.45);box-shadow:0 16px 50px rgba(130,100,255,0.13);}
+.pcard.wide{grid-column:span 2;}
+.thumb{display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.thumb.h220{height:220px;}
+.thumb.h260{height:260px;}
+.t1{background:linear-gradient(135deg,#180838,#2e1260);}
+.t2{background:linear-gradient(135deg,#081e18,#0f3528);}
+.t3{background:linear-gradient(135deg,#1f0818,#3a1030);}
+.t4{background:linear-gradient(135deg,#080e22,#101e40);}
+.phone{width:96px;height:182px;border:2px solid rgba(255,255,255,0.18);border-radius:17px;background:rgba(255,255,255,0.04);overflow:hidden;position:relative;flex-shrink:0;}
+.phone::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:28px;height:4px;background:rgba(255,255,255,0.14);border-radius:4px;}
+.ph-sc{padding:20px 8px 8px;display:flex;flex-direction:column;gap:5px;}
+.bar{height:5px;border-radius:3px;background:rgba(255,255,255,0.1);}
+.bar.v{background:#8264ff;width:55%;}
+.bar.p{background:#fc5c7d;width:42%;}
+.bar.g{background:#5cf0c8;width:68%;}
+.blk{height:40px;border-radius:7px;background:rgba(255,255,255,0.07);margin-top:3px;}
+.desk{width:250px;height:158px;border:2px solid rgba(255,255,255,0.14);border-radius:10px;background:rgba(255,255,255,0.04);overflow:hidden;}
+.dtop{height:22px;background:rgba(255,255,255,0.05);display:flex;align-items:center;padding:0 8px;gap:4px;border-bottom:1px solid rgba(255,255,255,0.07);}
+.dd{width:5px;height:5px;border-radius:50%;}
+.dbody{padding:9px;display:grid;grid-template-columns:50px 1fr;gap:7px;}
+.dside{display:flex;flex-direction:column;gap:5px;}
+.dn{height:5px;border-radius:3px;background:rgba(255,255,255,0.08);}
+.dn.on{background:#8264ff;}
+.dcont{display:flex;flex-direction:column;gap:5px;}
+.dh{height:7px;border-radius:3px;background:rgba(255,255,255,0.18);width:60%;}
+.dl{height:4px;border-radius:3px;background:rgba(255,255,255,0.07);}
+.df{height:34px;border-radius:6px;background:rgba(130,100,255,0.15);border:1px solid rgba(130,100,255,0.25);margin-top:2px;}
+.pinfo{padding:1.4rem 1.5rem;}
+.ptags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.65rem;}
+.pt{font-size:.67rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.22rem .65rem;border-radius:100px;}
+.pt.pu{background:rgba(130,100,255,0.12);color:#8264ff;border:1px solid rgba(130,100,255,0.25);}
+.pt.gr{background:rgba(92,240,200,0.1);color:#5cf0c8;border:1px solid rgba(92,240,200,0.25);}
+.pt.pk{background:rgba(252,92,125,0.1);color:#fc5c7d;border:1px solid rgba(252,92,125,0.25);}
+.pt.go{background:rgba(255,189,46,0.1);color:#ffbd2e;border:1px solid rgba(255,189,46,0.25);}
+.pname{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.4rem;}
+.pdesc{color:#9090a8;font-size:.86rem;line-height:1.65;}
+
+#process{background:#13131f;}
+.proc-head{text-align:center;max-width:540px;margin:0 auto 3rem;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.step{background:#0d0d14;border:1px solid rgba(130,100,255,0.15);border-radius:18px;padding:1.7rem 1.4rem;transition:border-color .3s,transform .3s;}
+.step:hover{border-color:rgba(130,100,255,0.42);transform:translateY(-4px);}
+.step-n{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8264ff;margin-bottom:.9rem;}
+.step-i{font-size:1.8rem;margin-bottom:.7rem;display:block;}
+.step-t{font-family:'Syne',sans-serif;font-size:.97rem;font-weight:700;margin-bottom:.45rem;}
+.step-d{color:#9090a8;font-size:.82rem;line-height:1.65;}
+
+#contact{background:#0d0d14;}
+.contact-box{max-width:680px;margin:0 auto;text-align:center;}
+.big-email{display:inline-block;margin:1.4rem 0 2.2rem;font-family:'Syne',sans-serif;font-size:clamp(.95rem,2.2vw,1.45rem);font-weight:700;color:#8264ff;text-decoration:none;padding:.55rem 1.4rem;border-radius:12px;border:1px solid rgba(130,100,255,0.3);background:rgba(130,100,255,0.07);word-break:break-all;display:block;}
+.big-email:hover{background:rgba(130,100,255,0.15);border-color:#8264ff;}
+.clinks{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;}
+.cl{display:inline-flex;align-items:center;gap:.5rem;background:#16162a;border:1px solid rgba(130,100,255,0.2);border-radius:100px;padding:.6rem 1.3rem;color:#f0eeff;text-decoration:none;font-size:.86rem;font-weight:500;transition:border-color .2s,background .2s,transform .2s;}
+.cl:hover{border-color:#8264ff;background:rgba(130,100,255,0.12);transform:translateY(-2px);}
+
+footer{background:#13131f;border-top:1px solid rgba(130,100,255,0.12);padding:1.7rem 6vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.flogo{font-family:'Syne',sans-serif;font-weight:800;font-size:.92rem;color:#9090a8;}
+.flogo span{color:#8264ff;}
+.fcopy{color:#9090a8;font-size:.76rem;}
+.flinks{display:flex;gap:1.4rem;}
+.flinks a{color:#9090a8;text-decoration:none;font-size:.76rem;transition:color .2s;}
+.flinks a:hover{color:#f0eeff;}
+
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;}.id-card{display:none;}.about-grid{grid-template-columns:1fr;}.pgrid{grid-template-columns:1fr;}.pcard.wide{grid-column:span 1;}.steps{grid-template-columns:repeat(2,1fr);}.nav-links{display:none;}}
+@media(max-width:540px){section{padding:4rem 5vw;}.steps{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#hero">Kalyani<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-btn" href="mailto:kalyanivishvas51@gmail.com">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="badge">Open to opportunities</div>
+      <h1>Hi, I'm<br><span class="grad">Kalyani</span><br>Shirambekar</h1>
+      <p class="hero-p">A B.Tech CSE student at SJBIT, Bengaluru with a passion for UI/UX design. I explore how technology and thoughtful design come together to create meaningful, human-centred experiences.</p>
+      <div class="btns">
+        <a class="btn-a" href="#projects">View My Work</a>
+        <a class="btn-b" href="mailto:kalyanivishvas51@gmail.com">Get in Touch</a>
+      </div>
+    </div>
+    <div class="id-card">
+      <div class="ic-name">Kalyani V. Shirambekar</div>
+      <div class="ic-role">UI/UX Design Enthusiast &middot; B.Tech CSE</div>
+      <div class="ic-div"></div>
+      <div class="ic-row">
+        <div class="ic-icon">&#127891;</div>
+        <div><div class="ic-lbl">College</div><div class="ic-val">SJB Institute of Technology, Bengaluru</div></div>
+      </div>
+      <div class="ic-row">
+        <div class="ic-icon">&#128187;</div>
+        <div><div class="ic-lbl">Branch &amp; Score</div><div class="ic-val">Computer Science &amp; Engineering &middot; 89.4%</div></div>
+      </div>
+      <div class="ic-row">
+        <div class="ic-icon">&#128231;</div>
+        <div><div class="ic-lbl">Email</div><div class="ic-val">kalyanivishvas51@gmail.com</div></div>
+      </div>
+      <div class="ic-row">
+        <div class="ic-icon">&#128205;</div>
+        <div><div class="ic-lbl">Location</div><div class="ic-val">Kengeri, Bengaluru, Karnataka</div></div>
+      </div>
+      <div class="ic-chips">
+        <span class="chip">Figma</span>
+        <span class="chip">User Research</span>
+        <span class="chip">Wireframing</span>
+        <span class="chip">Prototyping</span>
+        <span class="chip">Design Thinking</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span class="s-item"><span class="s-dot">&#10022;</span>Figma</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>UI Design</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>UX Research</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Wireframing</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Prototyping</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Design Thinking</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Mobile UI</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Web Design</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>User Personas</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Usability Testing</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Figma</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>UI Design</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>UX Research</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Wireframing</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Prototyping</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Design Thinking</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Mobile UI</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Web Design</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>User Personas</span>
+    <span class="s-item"><span class="s-dot">&#10022;</span>Usability Testing</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="a-card">
+        <div class="a-top">
+          <div class="avatar">&#128105;&#8205;&#128187;</div>
+          <div class="a-name">Kalyani Shirambekar</div>
+          <div class="a-role">UI/UX Enthusiast &middot; SJBIT Bengaluru</div>
+        </div>
+        <div class="a-bot">
+          <div class="stat-row">
+            <div class="astat"><div class="astat-n">89%</div><div class="astat-l">Aggregate</div></div>
+            <div class="astat"><div class="astat-n">CSE</div><div class="astat-l">Branch</div></div>
+            <div class="astat"><div class="astat-n">3</div><div class="astat-l">Certs</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-txt">
+      <div class="stag">About Me</div>
+      <h2>A CSE student who <span style="color:#8264ff;">thinks in pixels</span></h2>
+      <p>I'm Kalyani Vishvas Shirambekar, a B.Tech CSE student at SJB Institute of Technology, Bengaluru with an 89.4% aggregate. My background is in software engineering — I've built projects in Java and Python, earned a Google Data Analytics Certificate, and participated in IEEE workshops at SJBIT.</p>
+      <p>Alongside my technical work, I've developed a genuine passion for UI/UX design. I believe the best interfaces are ones you barely notice — good design removes friction and makes technology feel human. I'm actively learning design through concept projects and courses.</p>
+      <p><strong>This portfolio features concept UI/UX projects</strong> — because I believe great products need both solid engineering and thoughtful design.</p>
+      <div class="pt-title">Technical Skills</div>
+      <div class="pills">
+        <span class="pill">Java</span>
+        <span class="pill">Python</span>
+        <span class="pill">HTML / CSS</span>
+        <span class="pill">DBMS</span>
+        <span class="pill">Figma</span>
+        <span class="pill">Wireframing</span>
+        <span class="pill">Prototyping</span>
+        <span class="pill">Design Thinking</span>
+        <span class="pill">User Research</span>
+      </div>
+      <div class="pt-title">Certifications</div>
+      <div class="pills">
+        <span class="pill cert">&#127885; Google Data Analytics Certificate</span>
+        <span class="pill cert">&#127885; Supervised Learning: Regression &amp; Classification</span>
+        <span class="pill cert">&#127885; Cyber Arsenal Workshop &mdash; IEEE, SJBIT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="proj-head">
+    <div>
+      <div class="stag">My Work</div>
+      <h2>Concept Projects</h2>
+      <p class="sub">Design explorations across mobile and web, each following a real UX process.</p>
+    </div>
+    <div class="note-box">
+      <strong>&#128204; Note</strong>
+      These are concept projects that demonstrate my design thinking and UX process &mdash; not client work.
+    </div>
+  </div>
+  <div class="pgrid">
+
+    <!-- P1 wide -->
+    <div class="pcard wide">
+      <div class="thumb h260 t1">
+        <div style="display:flex;gap:18px;align-items:center;">
+          <div class="phone">
+            <div class="ph-sc">
+              <div class="bar v"></div>
+              <div class="bar" style="width:80%"></div>
+              <div class="blk"></div>
+              <div class="bar p"></div>
+              <div class="bar" style="width:60%"></div>
+              <div class="blk"></div>
+            </div>
+          </div>
+          <div class="phone" style="height:160px;opacity:.5;margin-top:22px;">
+            <div class="ph-sc">
+              <div class="bar g"></div>
+              <div class="bar" style="width:55%"></div>
+              <div class="blk"></div>
+              <div class="bar" style="width:70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="ptags">
+          <span class="pt pu">Mobile App</span>
+          <span class="pt gr">FinTech</span>
+          <span class="pt go">&#10022; Concept</span>
+        </div>
+        <div class="pname">SpendSmart &mdash; Personal Finance App</div>
+        <div class="pdesc">A budgeting app concept for college students. Problem: students overspend without realising it. Solution: a minimal visual spending tracker with smart category breakdowns and weekly nudges &mdash; designed mobile-first for Gen Z.</div>
+      </div>
+    </div>
+
+    <!-- P2 -->
+    <div class="pcard">
+      <div class="thumb h220 t2">
+        <div class="desk">
+          <div class="dtop">
+            <div class="dd" style="background:#ff5f56"></div>
+            <div class="dd" style="background:#ffbd2e"></div>
+            <div class="dd" style="background:#27c93f"></div>
+          </div>
+          <div class="dbody">
+            <div class="dside">
+              <div class="dn on"></div>
+              <div class="dn"></div>
+              <div class="dn"></div>
+              <div class="dn"></div>
+            </div>
+            <div class="dcont">
+              <div class="dh"></div>
+              <div class="dl" style="width:90%"></div>
+              <div class="dl" style="width:68%"></div>
+              <div class="df" style="background:rgba(92,240,200,0.14);border-color:rgba(92,240,200,0.28)"></div>
+              <div class="dl" style="width:50%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="ptags">
+          <span class="pt gr">EdTech</span>
+          <span class="pt pu">Web App</span>
+          <span class="pt go">&#10022; Concept</span>
+        </div>
+        <div class="pname">LearnFlow &mdash; Student Dashboard</div>
+        <div class="pdesc">A web dashboard redesign for online learning. Reduces cognitive overload by grouping tasks, deadlines, and resources in one clean, distraction-free view.</div>
+      </div>
+    </div>
+
+    <!-- P3 -->
+    <div class="pcard">
+      <div class="thumb h220 t3">
+        <div class="phone">
+          <div class="ph-sc">
+            <div class="bar p"></div>
+            <div class="blk" style="background:rgba(252,92,125,0.15);border:1px solid rgba(252,92,125,0.28);height:52px;"></div>
+            <div class="bar" style="width:64%"></div>
+            <div class="bar" style="width:50%"></div>
+            <div class="blk"></div>
+            <div class="bar p" style="width:72%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="ptags">
+          <span class="pt pk">Health</span>
+          <span class="pt pu">Mobile</span>
+          <span class="pt go">&#10022; Concept</span>
+        </div>
+        <div class="pname">MindSpace &mdash; Mental Wellness App</div>
+        <div class="pdesc">A calm, accessible wellness app concept for students under academic stress. Low-friction daily check-ins, mood tracking, and guided breathing exercises.</div>
+      </div>
+    </div>
+
+    <!-- P4 wide -->
+    <div class="pcard wide">
+      <div class="thumb h260 t4">
+        <div class="desk" style="width:290px;height:168px;">
+          <div class="dtop">
+            <div class="dd" style="background:#ff5f56"></div>
+            <div class="dd" style="background:#ffbd2e"></div>
+            <div class="dd" style="background:#27c93f"></div>
+          </div>
+          <div style="padding:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <div style="height:90px;background:rgba(130,100,255,0.15);border-radius:8px;border:1px solid rgba(130,100,255,0.28)"></div>
+            <div style="height:90px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(255,255,255,0.07)"></div>
+            <div style="height:90px;background:rgba(92,240,200,0.1);border-radius:8px;border:1px solid rgba(92,240,200,0.22)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="ptags">
+          <span class="pt pu">Web Design</span>
+          <span class="pt gr">E-Commerce</span>
+          <span class="pt go">&#10022; Concept</span>
+        </div>
+        <div class="pname">ShopEase &mdash; E-Commerce Redesign</div>
+        <div class="pdesc">A UX redesign concept for a local e-commerce site. Identified pain points through heuristic evaluation &mdash; cluttered navigation, poor mobile layout, confusing checkout &mdash; and proposed a cleaner, faster solution.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="proc-head">
+    <div class="stag" style="text-align:center;">How I Think</div>
+    <h2>My Design Process</h2>
+    <p class="sub" style="margin:0 auto;">Even for concept work, I follow a structured process rooted in real UX methodology.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">Step 01</div>
+      <span class="step-i">&#128269;</span>
+      <div class="step-t">Discover</div>
+      <div class="step-d">Understand the users, the problem space, and what currently exists. Research is the foundation of every good design decision.</div>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 02</div>
+      <span class="step-i">&#128506;</span>
+      <div class="step-t">Define</div>
+      <div class="step-d">Synthesise findings into clear problem statements, user personas, and journey maps. Know exactly what you're solving before touching UI.</div>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 03</div>
+      <span class="step-i">&#9999;</span>
+      <div class="step-t">Design</div>
+      <div class="step-d">From rough sketches to wireframes to polished prototypes. Iterate quickly, test ideas, and let feedback shape the final solution.</div>
+    </div>
+    <div class="step">
+      <div class="step-n">Step 04</div>
+      <span class="step-i">&#9989;</span>
+      <div class="step-t">Validate</div>
+      <div class="step-d">Test with peers or users. Does it solve the problem? Is it intuitive? Validate assumptions and document what could be improved next.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box">
+    <div class="stag">Get In Touch</div>
+    <h2>Let's connect</h2>
+    <p class="sub" style="margin:0 auto;">I'm always open to feedback, collaboration, and learning opportunities. Feel free to reach out!</p>
+    <a href="mailto:kalyanivishvas51@gmail.com" class="big-email">kalyanivishvas51@gmail.com</a>
+    <div class="clinks">
+      <a href="https://github.com/kalyanivishvas" target="_blank" class="cl">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:kalyanivishvas51@gmail.com" class="cl">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email Me
+      </a>
+      <a href="https://drive.google.com/file/d/1Iqu2a04qy8TwSxvrlg5u4qMeAyhxtfYt/view?usp=drivesdk" target="_blank" class="cl">
+        &#128196; Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">Kalyani<span>.</span></div>
+  <div class="fcopy">&copy; 2024 Kalyani Vishvas Shirambekar &middot; SJBIT, Bengaluru</div>
+  <div class="flinks">
+    <a href="#hero">Top &uarr;</a>
+    <a href="#projects">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
